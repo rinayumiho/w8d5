@@ -15,10 +15,11 @@ class Dog {
     }
 }
 
-Function.prototype.myBind = function(context) {
+Function.prototype.myBind = function(context, ...args) {
     let that = this;
-    return function() {
-        return that.apply(context);
+    // debugger
+    return function(...callargs) {
+        return that.apply(context, callargs.concat(args));
     }
 }
   
