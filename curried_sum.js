@@ -9,7 +9,7 @@
 //   }
 
 
-function curriedSum(count) {
+function curriedSum1(count) {
     let numbers = [];
     let sum = 0
     function _curriedSum(num) {
@@ -19,10 +19,26 @@ function curriedSum(count) {
         //    return numbers.reduce((a, b) => a + b, 0);
             return sum
         }
+        console.log(numbers);
         return _curriedSum;
     }
     return _curriedSum;
 }
+
+
+function curriedSum2(count) {
+    let numbers = [];
+    function _curriedSum(num) {
+        numbers.push(num);
+        if (numbers.length === count) {
+           return numbers.reduce((a, b) => a + b, 0);
+        }
+        console.log(numbers);
+        return _curriedSum;
+    }
+    return _curriedSum;
+}
+
 
 // function curriedSum(count) {
 //     let numbers = [];
@@ -36,5 +52,17 @@ function curriedSum(count) {
 //     }
 // }
 
-const sum = curriedSum(4);
-console.log(sum(5)(30)(20)(1)); // => 56
+const sum1 = curriedSum1(4);
+// console.log(sum(5)(30)(20)(1)); // => 56
+sum1(5);
+sum1(30);
+sum1(20);
+console.log(sum1(1));
+// const sum2 = curriedSum2(4);
+// console.log(sum(5)(30)(20)(1)); // => 56
+
+const sum2 = curriedSum2(4);
+sum2(5);
+sum2(30);
+sum2(20);
+console.log(sum2(1));
